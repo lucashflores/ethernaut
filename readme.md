@@ -45,3 +45,15 @@ This level taught how do fallback methods and delegatecall works. By sending a t
 ```javascript
 web3.eth.sendTransaction({from: player, to: contract.address, data: web3.eth.abi.encodeFunctionSignature("pwn()")})
 ```
+
+### Force (Level 8)
+In this level, we had to send money to an empty contract, which did not have fallback neither receive methods. The solution for this challenge was to create another contract that was able to receive money and then self destruct with the address of the original empty contract, so the balance of my contract was transfered to the empty one. (force.sol)
+
+### King (Level 9)
+The solution of this level is in ```king.sol``` but basically what happened is that we create another contract that is payable on constructor and sends the money to the original King contract to become king, but the receive and fallback methods of that contract are all malicious (reverts). What happens is that when the level tries to claim back ownership of the contract, the transfer function fails and the operation is never concluded. The contract needed to implement error handling and possibly a separate function for the king that was dethroned to reclaim funds for this not to happen.
+
+### Re-entrancy (Level 10)
+This was a funny one, I had transferred 0.003 eth to the contract until I found a solution and then forgot to make a function in my contract to withdraw the values back, so in the end I got nothing back =). The solution is in ```re-entracy.sol```, but all I did was to call the original Re-Entrancy contract withdraw inside my fallback function and voilá, all the money of the contract in my pockets (or not).
+
+### Elevator (Level 11)
+No secret here, just a simple flag that detects that is the second time calling the ```isLastFloor``` function and returns true the second time so the elevator contract top variable is true;
