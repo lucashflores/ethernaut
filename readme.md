@@ -47,10 +47,10 @@ web3.eth.sendTransaction({from: player, to: contract.address, data: web3.eth.abi
 ```
 
 ### Force (Level 7)
-In this level, we had to send money to an empty contract, which did not have fallback neither receive methods. The solution for this challenge was to create another contract that was able to receive money and then self destruct with the address of the original empty contract, so the balance of my contract was transfered to the empty one. (force.sol)
+In this level, we had to send money to an empty contract, which did not have fallback neither receive methods. The solution for this challenge was to create another contract that was able to receive money and then self destruct with the address of the original empty contract, so the balance of my contract was transfered to the empty one. The code is in ```force.sol```.
 
 ### Vault (Level 8)
-The main lesson that I took from this is that everything in the blockchain is public. If you store a password in the contract, it needs to be encrypted, otherwise I can use a network explorer and find the contract creation code in bytes and just take the password from there.
+The main lesson that I took from this is that everything in the blockchain is public. If you store a password in the contract, it needs to be encrypted, otherwise someone can use a network explorer and find the contract creation code in bytes and just take the password from there.
 
 ### King (Level 9)
 The solution of this level is in ```king.sol``` but basically what happened is that we create another contract that is payable on constructor and sends the money to the original King contract to become king, but the receive and fallback methods of that contract are all malicious (reverts). What happens is that when the level tries to claim back ownership of the contract, the transfer function fails and the operation is never concluded. The contract needed to implement error handling and possibly a separate function for the king that was dethroned to reclaim funds for this not to happen.
