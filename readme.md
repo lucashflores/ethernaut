@@ -59,7 +59,7 @@ The solution of this level is in ```king.sol``` but basically what happened is t
 This was a funny one, I had transferred 0.003 eth to the contract until I found a solution and then forgot to make a function in my contract to withdraw the values back, so in the end I got nothing back =). The solution is in ```re-entracy.sol```, but all I did was to call the original Re-Entrancy contract withdraw inside my fallback function and voilá, all the money of the contract in my pockets (or not).
 
 ### Elevator (Level 11)
-No secret here, just a simple flag that detects that is the second time calling the ```isLastFloor``` function and returns true the second time so the elevator contract top variable is true;
+No secret here, just a simple flag that detects that is the second time calling the ```isLastFloor``` function and returns true the second time so the elevator contract top variable is true.
 
 ### Privacy (Level 12)
 Another block explorer one, just get the bytecode of the creation of the contract, get the last 64 hex characters that represent the last item of the array an I just had to learn that bytes16 cast of bytes32 will get the first 32 hex characters from left to right and not from right to left.
