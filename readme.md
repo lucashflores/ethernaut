@@ -31,7 +31,7 @@ Basically the story about Rubixi, that changed the contract name but not the old
 The solution is in ```coin-flip.sol```, but basically we create another contract with a function to get the correct guess using the same logic the original coin flip uses to determine which side the coin flipped. The problem here is that the strategy to generate a random side does not generate a random side in fact and it is easily reproduced.
 
 ### Telephone (Level 4)
-The solution is in ```telephone.sol``` and consisted of calling the function to change ownership with the player address as parameter but from another contract, so tx.origin is not the address of the player.
+The solution is in ```telephone.sol``` and consisted of calling the function to change ownership with the player address as parameter but from another contract, so msg.sender is not the address of the player.
 
 ### Token (Level 5)
 The idea to solve this is to cause an onverflow, because the subtraction of tokens from balances is done by simply doing
