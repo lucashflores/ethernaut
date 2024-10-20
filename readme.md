@@ -65,7 +65,7 @@ No secret here, just a simple flag that detects that is the second time calling 
 Another block explorer one, just get the bytecode of the creation of the contract, get the last 64 hex characters that represent the last item of the array an I just had to learn that bytes16 cast of bytes32 will get the first 32 hex characters from left to right and not from right to left.
 
 ### Gatekeeper One (Level 13)
-The most complicated part about this was the gasLeft thing, I was trying to determine which gas to use by trial and error for a long time before I decided to just use a brute force solution. The gatekey was easy to determine ```0x0000001000003Bad```, i just got a 8 byte string that the last 2 bytes were the last 2 bytes of my player address, and a different byte in the first 4 to conform to the second requirement.3
+The most complicated part about this was the gasLeft thing, I was trying to determine which gas to use by trial and error for a long time before I decided to just use a brute force solution. The gatekey was easy to determine ```0x0000001000003Bad```, i just got a 8 byte string that the last 2 bytes were the last 2 bytes of my player address, and a different byte in the first 4 to conform to the second requirement.
 
 ### Gatekeeper Two (Level 14)
 The main thing to solve this one was to know that when something is called withing the constructor, the extcodesize will be 0 because the contract indeed have no code yet. For the gate key I just needed to do the inverse operation to calculate it. ```gatekeeper-two.sol```
